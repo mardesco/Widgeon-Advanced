@@ -19,7 +19,7 @@ if (have_posts()) :
     <?php
 	$subtitle = widgeon_get_subtitle();
 	if($subtitle){
-	    echo '<p class="subtitle">' . $subtitle . '</p>';
+	    printf( '<p class="subtitle">%s</p>', $subtitle );
 		}
 	?>	
     
@@ -54,7 +54,7 @@ if (have_posts()) :
 		foreach($categoryList as $category) {
 			$output .= '<a href="'.get_category_link($category->term_id ).'" title="' . esc_attr( sprintf( __( "All posts filed under %s", 'widgeon' ), $category->name ) ) . '">'.$category->cat_name.'</a>'.$separator;
 		}
-	echo trim($output, $separator) . '</p>';
+	printf('%s</p>', trim($output, $separator) );
 	}
 
 

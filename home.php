@@ -32,7 +32,7 @@ if (have_posts()) :
     <?php
 	$subtitle = widgeon_get_subtitle();
 	if($subtitle){
-	    echo '<p class="subtitle">' . $subtitle . '</p>';
+	    printf( '<p class="subtitle">%s</p>', $subtitle );
 		}
 	?>	
     
