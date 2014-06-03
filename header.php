@@ -27,20 +27,29 @@
 	_e( esc_attr( get_bloginfo('name').' : '.get_bloginfo('description') ) ) ;
 	
 	?></title>
-	<meta name="author" content="Mardesco">
+	<meta name="author" content="YourNameHere">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<script src="<?php echo get_template_directory_uri(); ?>/js/modernizr-2.6.1.min.js"></script>
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css">
 
-	<style type="text/css">
+	
 	<?php
 	$width = (int) esc_attr(of_get_option('widgeon_max_width', '1024'));
+	if($width && is_int($width) && $width != 0){
+	$breakpoint = $width -1;
 	
-	printf('#wrapper{max-width:%i;}', $width);
+	printf('
+		<style type="text/css">
+			#container{width:%dpx;}
+			@media screen and (max-width:%dpx){
+				#container{width:100%%;}
+			}
+		</style>', $width, $breakpoint);
+	}
 	?>
-	</style>
+	
 	
     
     <!-- begin wp_head -->
@@ -64,14 +73,12 @@ body_class();
 ?>>
 <a href="#contentLink" class="visuallyhidden">Skip navigation</a>
 <div id="container">
-	<header class="site-header">
+	<header class="site-header clearfix">
     	<hgroup>
             <h1 class="logo">
                 <a href="<?php 
                     echo home_url('/');//appends a trailing slash
-                    ?>" title="<?php 
-					printf( '%s : %s', esc_attr( get_bloginfo( 'name' ) ), esc_attr( get_bloginfo('description') ) );
-					?>">
+                    ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?> : <?php echo esc_attr( get_bloginfo('description') ); ?>">
                 <?php 
 				
 				$display_name = esc_attr(get_bloginfo('name'));
