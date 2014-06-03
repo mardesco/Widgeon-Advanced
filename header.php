@@ -27,7 +27,7 @@
 	_e( esc_attr( get_bloginfo('name').' : '.get_bloginfo('description') ) ) ;
 	
 	?></title>
-	<meta name="author" content="YourNameHere">
+	<meta name="author" content="Mardesco">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
@@ -78,7 +78,7 @@ body_class();
             <h1 class="logo">
                 <a href="<?php 
                     echo home_url('/');//appends a trailing slash
-                    ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?> : <?php echo esc_attr( get_bloginfo('description') ); ?>">
+                    ?>" title="<?php printf( '%s : %s', esc_attr( get_bloginfo( 'name' ) ), esc_attr( get_bloginfo('description') ) ); ?>">
                 <?php 
 				
 				$display_name = esc_attr(get_bloginfo('name'));
